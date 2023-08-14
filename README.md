@@ -10,9 +10,9 @@
 
 ## Status
 
-> The Landing Page can be viewed online on [this link](https://cdn.iurianu.rocks/onepage-bootstrap/)! 
+> The Landing Page can be viewed online on [this link](https://cdn.iurianu.rocks/onepage-bootstrap/)! <br />
 > There's also a second page that contains an HTML resume [here](https://cdn.iurianu.rocks/onepage-bootstrap/resume.html)
 
-## Notice
+## Note
 
 > Anyone can use the code for any purpose
