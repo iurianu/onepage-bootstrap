@@ -1,0 +1,109 @@
+
+// Header Styles
+
+header {
+  background-color: $theme-color1;
+  width: 100%;
+  height: 40px;
+  .container {
+    position: relative;
+  }
+}
+
+#headerLogoText {
+  padding-left: 10px;
+  font-family: 'Indie Flower', cursive; 
+  font-size: 28px;
+  color: $theme-color2;
+}
+
+
+// PAGE NAVIGATION STYLES
+
+ul#breadcrumb {
+  float: right;
+  display: inline;
+  list-style: none;
+  li {
+    display: inline-block;
+    line-height: 1.5;
+    a {
+      display: block;
+      background-color: transparent;
+      padding: 10px;
+      font-size: 14px;
+      text-decoration: none;
+      color: $theme-color2;
+    }
+    a:hover, a:focus, a:active {
+      background-color: $theme-color2;
+      color: $theme-color1 !important;
+    }
+  }
+}
+
+@media all and (max-width : 620px) {
+  ul#breadcrumb {
+    display: none;
+    width: 100%;
+    background-color: $theme-color2;
+    z-index: 1000 !important;
+    @include opacity(1);
+    @include transition(all 0.7s ease);
+    li {
+      display: block !important;
+      a {
+        color: $theme-color1 !important;
+      }
+      a:hover, a:focus, a:active {
+        background-color: $theme-color1 !important;
+        color: $theme-color2 !important;
+      }
+    }
+  } 
+}
+
+.expanded {
+  display: block !important;
+  position: absolute;
+}
+
+#nav-toggle {
+  position: absolute;
+  right: 15px;
+  top: 7px;
+  padding: 10px 35px 16px 0px;
+  cursor: pointer;
+}
+
+%nav-toggle-span {
+  position: absolute;
+  display: block;
+  content: ''; 
+  height: 3px;
+  width: 25px;
+  background: $theme-color2;
+  cursor: pointer;
+  @include border-radius(5px);
+  @include transition(all 500ms ease-in-out);
+}
+
+#nav-toggle {
+  span{@extend %nav-toggle-span;}
+  span:before {top: -7px;@extend %nav-toggle-span;}
+  span:after {bottom: -7px;@extend %nav-toggle-span;}
+}
+
+#nav-toggle.active{
+  span {background-color: transparent;}
+  span:before {
+    top: 0;
+    @include rotate(45deg);
+  }
+  span:after {
+    top: 0;
+    @include rotate(-45deg);
+  }
+}
+
+@media all and (min-width : 621px) { #nav-toggle {display: none;} }

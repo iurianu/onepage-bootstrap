@@ -1,0 +1,738 @@
+$theme-color: #666;
+$theme-color2: $theme-color +20;
+$theme-color3: $theme-color +50;
+
+@import "mixins";
+
+//  START GENERAL STYLES
+
+* {
+    @include box-sizing;
+    @include transition(all 0.5s ease);
+    outline: none;
+    &::selection, &::-moz-selection {
+        background: #222;
+        color: #fff;
+        text-shadow: none;
+    }
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+      font-family: Merriweather, 'Helvetica Neue', Arial, sans-serif;
+    -webkit-tap-highlight-color: #222;
+    @include overflow-x(hidden);
+    @include overflow-y(auto);
+}
+
+img {
+    max-width: 100%;
+    &::selection, &::-moz-selection {
+        background: 0 0;
+        color: #fff;
+    }
+}
+
+hr {
+    border-width: 3px;
+    border-color: $theme-color;
+    max-width: 50px;
+}
+
+hr.light {
+    border-color: #fff;
+}
+
+a {
+    color: $theme-color;
+    @include transition(all 0.35s ease);
+    &:hover, &:focus {
+        color: $theme-color3;
+    }
+}
+
+h1, h2, h4, h6 {
+    font-family: Playball, cursive;
+}
+
+h3, h5 {font-family: Merriweather, sans-serif;}
+/*
+p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+*/
+.bg-primary {
+    background-color: $theme-color3;
+}
+
+.bg-dark {
+    background-color: #222;
+    color: #fff;
+}
+
+.text-faded {
+    color: $theme-color2;
+}
+
+section {
+    padding: 100px 0 50px;
+}
+
+aside {
+    padding: 50px 0;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+
+// END GENERAL STYLES
+
+// START NAVBAR STYLES
+
+%link-font {
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.top-bar {
+    background: #191919 none repeat scroll 0 0;
+    padding: 10px 0;
+    margin: 0 -15px !important;
+    border-bottom: 1px solid #222;
+    line-height: 28px;
+    text-align: right;
+    height: 50px;
+    .social {
+        text-align: right;
+        ul.social-share {
+            display: inline-block;
+            padding: 0;
+            margin: 0;
+            list-style: outside none none;
+            li {
+                display: inline-block;
+                a {
+                    display: inline-block;
+                    background: #404040 none repeat scroll 0 0;
+                    color: #fff;
+                    border-radius: 2px;
+                    line-height: 25px;
+                    text-align: center;
+                    width: 25px;
+                    height: 25px;
+                    transition: color 300ms ease 0s, background-color 300ms ease 0s;
+                }
+            }
+        }
+        .search {
+            display: inline-block;
+            input.search-form {
+                background: transparent none repeat scroll 0 0;
+                color: #fff;
+                padding: 0 10px;
+                border: 0 none;
+                width: 70px;
+                transition: all 400ms ease 0s;
+                &:hover {
+                    width: 180px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width : 480px) {
+    .top-bar {
+        .top-number {
+            display: none;
+        }
+    }
+}
+
+.navbar-default {
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    background-color: #fff;
+    border-color: rgba(34, 34, 34, .05);
+    @include transition(all 0.35s ease);
+    .nav {
+        li {
+            a, a:focus, a:hover, a:focus:hover {
+                @extend %link-font;
+                color: $theme-color;
+            }
+        }
+        li.active {
+            a, a:hover, a:focus, a:focus:hover {
+                background-color: transparent;
+                color: $theme-color;
+            }
+        }
+    }
+    .navbar-header {
+        .navbar-brand {
+            font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: $theme-color;
+            text-transform: uppercase;
+            &:hover, &:focus {
+                color: $theme-color2;
+            }
+        }
+    }
+}
+
+@media(min-width:768px) {
+    .navbar-default {
+        background-color: transparent;
+        color: $theme-color2;
+        .navbar-header {
+            .navbar-brand {
+                color: $theme-color;
+                &:hover, &:focus {
+                    color: $theme-color3;
+                }
+            }
+        }
+        .nav {
+            li {
+                a, a:focus {
+                    color: #fff;
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+
+
+    .navbar-default.affix {
+        background-color: #fff;
+        border-color: rgba(34,34,34,.05);
+        .navbar-header {
+            .navbar-brand {
+                font-size: 14px;
+                color: $theme-color;
+                &:hover, &:focus {
+                    color: $theme-color3;
+                }
+            }
+        }
+        .nav {
+            li {
+                a, a:focus {
+                    color: $theme-color;
+                    &:hover {
+                        color: $theme-color3;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+// END NAVBAR STYLES
+
+// START HEADER STYLES
+
+header {
+    position: relative;
+    color: $theme-color;
+    text-align: center;
+    width: 100%;
+    min-height: auto;
+    @include bg-image("../img/bgimg.jpg");
+    background-position: center;
+    @include bg-size(cover);
+    .header-content {
+        position: relative;
+        padding: 100px 15px;
+        text-align: center;
+        width: 100%;
+        .header-content-inner {
+            hr {
+                margin: 20px auto;
+            }
+            p {
+                font-size: 35px;
+                font-weight: 800;
+                color: black;
+                margin-bottom: 30px;
+                text-shadow: 2px 2px $theme-color;
+                .headline {
+                    font-family: "Indie Flower", cursive;
+                    font-size: 80px;
+                    margin-bottom: 0;
+                }
+            }
+            .page-scroll {
+                margin-top: 20px;
+            }
+            .main-image {
+                margin-top: -20px;
+                height: auto;
+            }
+        }
+    }
+}
+
+.img-responsive {
+    background-color: $theme-color;
+    padding: 2px 2px 2px 0;
+    border: 3px inset $theme-color2;
+}
+
+@media(min-width:768px) {
+    header {
+        min-height: 100%;
+        .header-content {
+            position: absolute;
+            top: 30%;
+            padding: 0 50px;
+            @include translateY(-50%);
+            .header-content-inner {
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 1000px;
+                p {
+                    font-size: 30px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    max-width: 80%;
+                }
+            }
+        }
+
+    }
+
+}
+
+@media (max-width : 480px) {
+    .main-image {
+        width: 60%;
+    }
+}
+
+@media (min-width : 481px) {
+    .main-image {
+        width: 40%;
+    }
+}
+
+.section-heading {
+    font-size: 40px;
+    margin-top: 0;
+}
+
+// END HEADER STYLES
+
+// START SERVICE STYLES
+
+.service-box {
+    margin: 50px auto 0;
+    max-width: 400px;
+}
+
+@media(min-width:992px) {
+    .service-box {
+        margin: 20px auto 0;
+        p {
+            margin-bottom: 0;
+        }
+    }
+}
+
+section {
+    .container {
+        .restmenuwrap {
+            @include box-shadow7(0 0 0 16px #fff inset, 0 0 0 17px #eee inset, 0 0 0 18px #fff inset, 0 0 0 19px #eee inset, 0 0 0 20px #fff inset, 0 0 0 21px #eee inset, 0 4px 20px #000);
+            font-size: 12px;
+            @include opacity(1);
+            background-color: #fff;
+            color: black;
+            padding: 40px 40px 20px;
+            pointer-events: auto;
+            @include translateZ(0px);
+            .restitem {
+                    margin-bottom: 40px;
+                }
+            h3 {
+                font-size: 16px;
+                font-weight: bold;
+                margin-top: 20px;
+                margin-bottom: 15px;
+            }
+            h5 {
+                font-size: 14px;
+                font-weight: 700;
+                color: #333;
+                margin: 0;
+                line-height: 1.4;
+            }
+        }
+        a.btn {
+            margin-top: 30px;
+        }
+    }
+}
+
+@media all and (max-width : 480px) {
+    section {
+        .container {
+            padding-left: 0;
+            padding-right: 0;
+            .col-md-4 {
+                padding-left: 0;
+                padding-right: 0;
+            }
+            h2 {
+                font-size: 25px;
+            }
+        }
+    }
+}
+
+// END SERVICE STYLES
+
+//START PORTFOLIO STYLES
+
+.portfolio-box {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    max-width: 650px;
+    .portfolio-box-caption {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        background: $theme-color2;
+        color: #fff;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        @include opacity(0);
+        @include transition(all 0.35s ease);
+        .portfolio-box-caption-content {
+            position: absolute;
+            top: 50%;
+            text-align: center;
+            width: 100%;
+            @include translateY(-50%);
+            .project-category {
+                font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+                font-size: 14px;
+                font-weight: 600;
+                color: black;
+                padding: 0 15px;
+                text-transform: uppercase;
+            }
+            .project-name {
+                font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+                font-size: 18px;
+                padding: 0 15px;
+            }
+        }
+
+    }
+    &:hover {
+        .portfolio-box-caption {
+            @include opacity(0.9);
+        }
+    }
+}
+
+@media(min-width:768px) {
+    .portfolio-box  {
+        .portfolio-box-caption {
+            .portfolio-box-caption-content {
+                .project-category {
+                    font-size: 16px;
+                }
+                .project-name {
+                    font-size: 22px;
+                }
+            }
+        }
+    }
+
+}
+
+.call-to-action {
+    h2 {
+        margin: 0 auto 20px;
+    }
+}
+
+.text-primary {
+    color: $theme-color;
+}
+
+.no-gutter > [class*=col-] {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+%btn-def {
+    border-color: #ededed;
+    color: #222;
+    background-color: #f2f2f2;
+}
+
+%btn-def-dis {
+    border-color: #fff;
+    background-color: #fff;
+}
+
+.btn-default {
+    background-color: #fff;
+    color: #222;
+    border-color: #fff;
+    @include transition(all 0.35s ease);
+    .badge {
+        background-color: #222;
+        color: #fff;
+    }
+    &:active, .active {
+        @extend %btn-def;
+        background-image: none;
+    }
+    &:hover, &:focus, .focus {
+        @extend %btn-def;
+    }
+    .disabled, &[disabled] {
+            @extend %btn-def-dis;
+        &:hover, &:focus, .focus, &:active, .active {
+            @extend %btn-def-dis;
+        }
+    }
+}
+
+.open {
+    .dropdown-toggle.btn-default {
+        @extend %btn-def;
+        background-image: none;
+    }
+}
+
+fieldset[disabled] {
+    .btn-default {
+        @extend %btn-def-dis;
+        &:hover, &:focus, .focus, &:active, .active {
+            @extend %btn-def-dis;
+        }
+    }
+}
+
+%btn-prim {
+    border-color: #ed431f;
+    color: #fff;
+    background-color: $theme-color2;
+}
+
+%btn-prim-dis {
+    border-color: $theme-color;
+    background-color: $theme-color;
+}
+
+.btn-primary {
+    background-color: $theme-color;
+    color: black;
+    border-color: $theme-color;
+    @include transition(all 0.35s ease);
+    .badge {
+        background-color: #fff;
+        color: $theme-color;
+     &:active, .active {
+        @extend %btn-prim;
+        background-image: none;
+     }
+    }
+    &:hover, &:focus, .focus {
+        @extend %btn-prim;
+    }
+    .disabled, &[disabled] {
+        @extend %btn-prim-dis;
+        &:hover, &:focus, .focus, &:active, .active {
+            @extend %btn-prim-dis;
+        }
+    }
+
+}
+
+fieldset[disabled] {
+    .btn-primary {
+        @extend %btn-prim-dis;
+        &:hover, &:focus, .focus, &:active, .active {
+            @extend %btn-prim-dis;
+        }
+    }
+}
+
+.open {
+    .dropdown-toggle.btn-primary {
+        @extend %btn-prim;
+        background-image: none;
+    }
+}
+
+.btn {
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-weight: 700;
+    border: 0;
+    border-radius: 300px;
+    text-transform: uppercase;
+}
+
+.btn-xl {
+    padding: 15px 30px;
+}
+
+section#portfolio {
+    padding-bottom: 0px;
+}
+
+// END PORTFOLIO STYLES
+
+// START FEEDBACK STYLES
+
+#feedback {
+    h4 {
+        font-size: 24px;
+        padding-bottom: 10px;
+        margin-bottom: 35px;
+        border-bottom: 1px solid $theme-color;
+    }
+}
+
+blockquote {
+    position: relative;
+    font-size: 13px;
+    font-style: italic;
+    padding: 20px 70px 10px;
+    margin: 0;
+    border: 0 none;
+    text-align: left;
+    &::before {
+        display: block;
+        position: absolute;
+        top: -30px;
+        left: 10px;
+        font-family: Georgia;
+        font-size: 12px;
+        color: #cc580c;
+    }
+    span {
+        color: #777;
+        &[itemprop="commentText"] {
+            text-align: left;
+        }
+        &[itemprop="legalName"] , .institute {
+            color: #337ab7;
+        }
+        &[itemprop="name"], i.fa-star {
+            color: #cc580c;
+        }
+        &[itemprop="itemReviewed"] {
+            color: black;
+            padding-top: 5px;
+            float: right;
+        }
+        &.rating {
+            float: right;
+        }
+    }
+    cite {
+        display: block;
+        font-size: 14px;
+        color: #cc580c;
+        margin-top: 5px;
+        text-align: right;
+    }
+}
+
+i.fa-star {
+    color: #cc580c;
+}
+
+#knkLogo {
+  clear: both;
+  width: 150px;
+  margin: 20px auto 0;
+}
+
+@media (max-width : 480px) {
+    blockquote {
+        padding: 20px 30px 10px;
+    }
+}
+
+// END FEEDBACK STYLES
+
+// START FOOTER STYLES
+
+
+ul {
+    padding-left: 0;
+    text-align: center;
+    li.socialButtons {
+        display: inline-block;
+        background: rgba(0, 0, 0, 0.2) none repeat scroll 0 0;
+        color: #fff;
+        margin: 0 4px;
+        border-radius: 3px;
+        line-height: 45px;
+        text-align: center;
+        width: 45px;
+        height: 45px;
+        a {
+            display: block;
+            color: #fff;
+            width: 42px;
+            height: 42px;
+        }
+        .social-icon {
+            width: 15px;
+        }
+        &:hover {
+            background:#2a2a2a;
+        }
+    }
+}
+
+.share-buttons {
+    left: 10px;
+    padding-top: 10px;
+}
+
+// END FOOTER STYLES
+
+//CLEARFIX
+
+* html .clearfix {height: 1%;}
+
+html[xmlns] .clearfix {display: block;}
+
+.clearfix {display: inline-block;}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    line-height: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+@import 'widget';
